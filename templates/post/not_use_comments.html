@@ -1,0 +1,22 @@
+
+{%for comment in comments%}
+    
+
+        {% if not comment.perent_comment_id or users_comments%}{# если нет родительского комментария ИЛИ это комментарии пользователя, в его профиле #}
+        
+            <div class="comment" data-id="{{comment.id}}">
+                            
+                {% include "post/comment_body.html" %}
+                
+                {% if not users_comments %}{# Если это коментарии пользоватенля в его профиле, вложенность делать не надо #}
+                    {% for comment in comment.comments_set.all %}
+
+                            {% include "post/child_comment.html" %}
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endif %}
+
+    
+{% endfor %}

@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% block head %}
+    <meta name="yandex-verification" content="68725e00ea28ba10" />
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'favicon.ico' %}?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}?v=2" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?v={{css_version}}" />
+    <link rel="stylesheet" href="{% static 'css/modal_window.css' %}?v={{css_version}}" />
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sanchez&display=swap" rel="stylesheet">
+
+    <script src="{% static 'js/preload_lib.js' %}?v={{js_version}}"></script>{#Нужен не на всех страницах, по хорошему, надо раскидать#}
+
+
+    {% endblock head %}
+    <title>     
+        {% block title %}
+        Citrom.ru
+        {% endblock title %}
+       
+    </title>
+    {% block description %}
+            
+    {% endblock description %}
+
+</head>
+
+<body>
+    {% block header %}
+
+
+    <header>
+        <div class="system_alert">
+            <p class="system_alert_text"></p><span class="system_alert_x">x</span>
+        </div>
+
+        <div class="section">
+            <a class="menu-btn">
+                <span class="menu-span"></span><!-- span нужен для бургера -->
+            </a>
+        </div>
+        <div class="sitebar_btn">
+            {% if request.user.is_authenticated %}
+                <img src="{{user_avatar}}" />
+            {% else %}
+                <img src={% static 'img/default_avatar.svg' %}?v={{static_version}} />
+            {% endif %}
+            {% if request.user.is_authenticated and user_new_message %}
+                <div class="new_message_mobile_menu"></div>
+            {% endif %}
+        </div>
+        <div class="fone_header">
+            <a class="fone_logo" href="/">Citrom</a>
+        </div>
+        <nav class="nav_header">
+            <a href="/" class="text_header logo">
+                <div class="">Citrom</div>
+            </a>
+            <a href="/" class="text_header">
+                <div class="">Лента</div>
+            </a>
+            <a href="{% url 'subs' %}" class="text_header">
+                <div class="">Моя лента</div>
+            </a>
+            <a href="{% url 'about_us' %}" class="text_header">
+                <div class="">О нас</div>
+            </a>
+                <a href="{% url 'new_post' %}" class="text_header">
+                    <div class="">Создать пост</div>
+                </a>
+                <div class="pass_header"></div>
+                <form action="{% url 'search' %}" method="GET" class="text_header search">
+                    <div class="magnifier">
+                    
+                    
+                        <button>
+                        <img src="{% static 'img/magnifier.svg' %}?v={{static_version}}" alt="поиск">
+                        </button type="submit">
+                    </div>
+                    <input class="search_input" type="text" name="key" placeholder="Поиск" />
+                </form>
+        </nav>
+    </header>
+    {% endblock header %}
+    
+    <div class="break"></div>
+    <main>
+
+
+        <div class="page_content_wrapper">
+        
+            {% block content %}
+            {% endblock content %}
+            
+
+        <div class="block_for_scroll"></div>
+        </div>
+
+        <a class="back_to_top" title="Наверх">&uarr;</a>
+    
+
+        <div class="sitebar">
+            {% block sitebar %}
+                {% block user_window %}
+                    {% include "usermanager/login.html" %}
+                {% endblock user_window %}
+            {% block switchs %}
+                
+            <div class="temp_class_1 config_switch_wrapper">
+                <div class="message_reload">
+                    Изменения вступят в силу после перезагрузки
+                </div>
+                {% if request.user.is_authenticated and is_18_age%} {#Если аворизован и есть 18 #}
+                <div class="config_switch">
+                    <label class="label_switch" for="nsfw" >NSFW</label>
+                    <label class="switch">
+                        <input class="config_switch" id="nsfw" value="nsfw" type="checkbox" {% if nsfw %} checked {% endif %} />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                {% endif %}
+                <div class="config_switch">
+                    <label class="label_switch" for="gore">Жесть</label>
+                    <label class="switch">
+                        <input class="config_switch" id="gore" value="gore" type="checkbox" {% if gore %} checked {% endif %} />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="config_switch">
+                    <label class="label_switch" for="politic">Политика</label>
+                    <label class="switch">
+                        <input class="config_switch" id="politic" value="politic" type="checkbox" {% if politic %} checked {% endif %} />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="config_switch">
+                    <label class="label_switch" for="hide_view">Скрывать просмотренное</label>
+                    <label class="switch">
+                        <input class="config_switch" id="hide_view" value="hide_view" type="checkbox" {% if hide_view %} checked {% endif %} />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            {% endblock switchs %}
+            {% endblock sitebar %}
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="fone_footer">
+
+        </div>
+    </footer>
+
+    {% include "modal_window.html" %}
+
+</body>
+
+
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+{% include "setting_js.html" %}
+
+<script src="{% static 'js/serch_block_index.js' %}?v={{js_version}}"></script>
+<script src="{% static 'js/main.js' %}?v={{js_version}}"></script>
+<script src="{% static 'js/modal_window.js' %}?v={{js_version}}"></script>
+
+
+
+
+
+
+
+{% endblock script %}
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(75086368, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/75086368" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!--LiveInternet counter--><a class="hidden" href="https://www.liveinternet.ru/click"
+target="_blank"><img id="licntA238" width="88" height="15" style="border:0" 
+title="LiveInternet: показано число посетителей за сегодня"
+src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+alt=""/></a><script>(function(d,s){d.getElementById("licntA238").src=
+"https://counter.yadro.ru/hit?t26.13;r"+escape(d.referrer)+
+((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+(s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+";h"+escape(d.title.substring(0,150))+";"+Math.random()})
+(document,screen)</script><!--/LiveInternet-->
+
+
+
+
+
+</html>
+
+
+
+{% comment %}
+
+{{ block.super }} Вставляет текст из родительского шаблона. Хорошо для случаем, когда текст надо дополнить а не заменить
+
+{% extends "base.html" %} extends это подключение родительского шаблона. Это ВСЕГДА должен быть ПЕРВЫЙ блок шаблона,
+иначе не работает
+
+{% include "includes/nav.html" %}
+
+
+{% endcomment %}

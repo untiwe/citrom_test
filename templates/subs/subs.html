@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block  head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/post_style.css' %}?v={{css_version}}" />
+  <link rel="stylesheet" href="{% static 'css/post_cover_style.css' %}?v={{css_version}}" />
+  <link rel="stylesheet" href="{% static 'css/subs.css' %}?v={{css_version}}" />
+{% endblock head %}
+
+{% block title %}
+  Моя лента
+{% endblock title %}
+
+ 
+{% block content %}
+
+    {% if is_user_subs < 0 %}
+        {% include 'subs/not_authenticated.html' %}
+    {% elif is_user_subs == 0 %}
+        {% include 'subs/not_sub.html' %}
+    {% else %}
+        {#Просто загружаем посты#}
+    {% endif %}
+
+{% endblock content %}
+
+{% block script %}
+  {{ block.super }}
+  <script src="{% static 'js/post_cover.js' %}?v={{js_version}}"></script>
+  <script src="{% static 'js/subs.js' %}?v={{js_version}}"></script>
+  {% if is_user_subs > 0 %}
+    <script src="{% static 'js/content_generator.js' %}?v={{js_version}}"></script>
+  {% endif %}
+{% endblock script %}

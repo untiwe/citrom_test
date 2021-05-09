@@ -1,0 +1,98 @@
+@import "settings.scss";
+
+* {
+    transition: all 0.5s;
+  }
+
+.modal_window_fone{
+    display: none;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 1, 1, 0.50);
+    z-index: 20;
+}
+
+
+.window_fone_open{
+    display: block;
+}
+
+
+.modal_window_wrapper{
+    height: min-content;
+    min-height:100px;
+    width: min-content;
+    min-width:290px;
+	margin: auto;
+	position: fixed;
+	top: -100%; //минус 100% высоты экрана 
+    left: 50%;
+	transform: translate(-50%,-50%);
+    background-color: $grey;
+}
+
+.modal_window_open{
+    top: 50%;
+}
+
+.header_modal_window{
+    height: min-content;
+    background-color: $dark_grey;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    
+}
+
+.modal_window_heading{
+    text-align: center;
+    margin-left: 5px;
+    flex-grow: 1;
+}
+.modal_window_x{
+    cursor: pointer;
+    width: 20px;
+    text-align: right;
+    margin-right: 1px;
+    margin-top: 1px;
+    align-self: flex-start;
+    text-align: center;
+}
+
+.body_modal_window{
+    width: 95%;
+    margin: auto;
+}
+
+.message_modal_window{
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    color: $red;
+}
+
+//стили для отображения картинки при клике по ней
+.img_wrapper{//добалвемя к body_modal_window для отображения картинки на весь монитор
+    width: 100%;
+}
+  
+.post_content_img{
+  margin-top: -20px;
+  max-width: 98vw;
+  max-height: 90vh;
+  border-radius: 0 0 20px 20px;
+}
+  
+
+@media (max-width: 768px) {
+    .header_modal_window{
+        font-size: 18px;
+    }
+
+}
+

@@ -1,0 +1,20 @@
+2021-05-09 21:12:57,093 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2021-05-09 21:13:01,378 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:13:02,839 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:13:02,974 django.security.SuspiciousFileOperation ERROR    The joined path (C:\Web\citrom\media\posts\2021\04\26\image_nP3ZuKv.webp) is located outside of the base path component (C:\Web\citrom_test\media)
+2021-05-09 21:13:03,052 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:13:03,096 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:13:03,265 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:13:03,341 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:13:03,379 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:13:03,400 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:13:03,443 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:13:03,546 django.request WARNING  Bad Request: /media/C:/Web/citrom/media/posts/2021/04/26/image_nP3ZuKv.webp
+2021-05-09 21:13:13,503 django.security.SuspiciousSession WARNING  Session data corrupted
+2021-05-09 21:15:15,365 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2021-05-09 21:15:22,342 django.security.SuspiciousFileOperation ERROR    The joined path (C:\Web\citrom\media\posts\2021\04\26\image_nP3ZuKv.webp) is located outside of the base path component (C:\Web\citrom_test\media)
+2021-05-09 21:15:22,675 django.request WARNING  Bad Request: /media/C:/Web/citrom/media/posts/2021/04/26/image_nP3ZuKv.webp
+2021-05-09 21:15:37,264 django.security.SuspiciousFileOperation ERROR    The joined path (C:\Web\citrom\media\posts\2021\04\26\image_nP3ZuKv.webp) is located outside of the base path component (C:\Web\citrom_test\media)
+2021-05-09 21:15:37,413 django.request WARNING  Bad Request: /media/C:/Web/citrom/media/posts/2021/04/26/image_nP3ZuKv.webp
+2021-05-09 21:16:11,608 django.utils.autoreload INFO     C:\Web\citrom_test\citrom\settings.py changed, reloading.
+2021-05-09 21:16:11,611 asyncio      DEBUG    Using proactor: IocpProactor

@@ -1,0 +1,37 @@
+
+
+
+<form method="POST" class="temp_class_1 user_window_wrapper">
+<p class="user_sell reg_message"></p>
+{{form.username}}
+{{form.password1}}
+{{form.password2}}
+{{form.email}}
+{% csrf_token %}
+<button class="temp_class_1 user_sell register_button">Регистрация</button>
+</form> 
+
+
+{% comment %} <style type="text/css"> 
+.come_class{
+    color: blue;
+    font-size: 30px;
+}
+</style>
+
+{% if messages %}
+{% for mes in messages%}
+    {% if mes.tags == 'error' %}
+        {{mes}}
+    {% else %}
+        {{mes}}
+    {% endif %}
+{% endfor %}
+{% endif %} {% endcomment %}
+
+
+{% comment %} <form method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">Зарегистрироваться</button>
+<form> {% endcomment %}

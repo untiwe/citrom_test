@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/post_style.css">
+    <link rel="stylesheet" href="../static/css/post_cover_style.css">
+    <link rel="stylesheet" href="../static/css/user.css">
+    <link rel="stylesheet" href="../static/css/comments.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Rum+Raisin&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="system_alert"><p class="system_alert_text"></p><span class="system_alert_x">x</span></div>
+
+        <div class="section">
+            <a href="#" class="menu-btn">
+                <span></span><!-- span нужен для бургера -->
+            </a>
+        </div>
+        <div class="sitebar_btn">
+
+            <img src="../static/img/default_avatar.svg">
+        </div>
+        <div class="fone_header">
+            <a class="fone_logo" href="#">Citrom</a>
+        </div>
+        <nav class="nav_header">
+
+            <a href="#" class="text_header logo">
+                <div class="">Citrom</div>
+            </a>
+            <a href="#" class="text_header">
+                <div class="">Лента</div>
+            </a>
+            <a href="#" class="text_header">
+                <div class="">Моя лента</div>
+            </a>
+            <a href="#" class="text_header">
+                <div class="">О нас</div>
+            </a>
+            <a href="#" class="text_header">
+                <div class="">Создать пост</div>
+            </a>
+            <div class="pass_header"></div>
+            <form action="#" method="GET" class="text_header search">
+                <div class="magnifier"><button><img src="../static/img/magnifier.svg"></button>
+                </div>
+                <input class="search_input" type="text" placeholder="Поиск">
+            </form>
+        </nav>
+
+    </header>
+    <div class="break"></div>
+<main>
+        <div class="page_content_wrapper">
+        <!-- сразу подгружаем картинку загрузки для быстрой вставки -->
+        <div class="hidden"><img src='../../static/img/time_refresh_avatar.svg'></div> 
+        <!-- сразу подгружаем картинку загрузки для быстрой вставки -->
+            <section class="user_info_wrapper">
+                <div class="user_info_avatar"><img class="temp_class_1" src="../static/img/default_avatar.svg"
+                        alt="аватар пользователя"></div>
+                <div class="user_info_about">
+
+                    <input type="file" accept="image/*" id="load_avatar" value="load_avatar" class="hidden"></input>
+                    <div class="user_info_date_reg">Карлсон с 20 августа 2020</div>
+                    <div class="user_info_cell">Постов 154</div>
+                    <div class="user_info_cell">Рейтинг 42</div>
+                    <div class="user_info_cell">Поставил <img src="../static/img/big_blue_arrow.svg"
+                            alt="плюс рейтинг"> 1547945 раз</div>
+                    <div class="user_info_cell">Поставил <img src="../static/img/big_red_arrow.svg"
+                            alt="минус рейтинг"> 1547945 раз</div>
+                    <div class="user_info_cell avatar_btns">
+                        <label class="btn_avatar left_btn" for="load_avatar"><img src="../static/img/refresh_avatar.svg" alt="Обновить"></label>
+                        <span class="btn_avatar right_btn"><img src="../static/img/delete_avatar.svg" alt="Удалить"></span>
+                    </div>
+
+                </div>
+            </section>
+            <section class="config">
+                <form class="section_config_wrapper"  id="change_password_form" method="POST">
+                    <div class="section_config_header">
+                        <P>Смена пароля</P>
+                    </div>
+                    <div class="section_config_content">
+                        <P>Старый пароль</P><input class="input_border config_input" type="password"></input>
+                        <P>Новый пароль</P><input class="input_border config_input" type="password"></input>
+                        <P>Повторите пароль</P><input class="input_border config_input" type="password"></input>
+                    </div>
+                    <button class="section_config_footer">Изменить</button>
+                </form>
+                <form class="section_config_wrapper" id="info_user_form" method="POST">
+                    <div class="section_config_header">
+                        <P>Немного информации</P>
+                    </div>
+                    <div class="section_config_content">
+                        <P>Имя</P><input class="input_border config_input" name="first_name" type="text"></input>
+                        <P>Пол</P><select class="input_border config_input" name="gender" type="text">
+                            <option value="Male">Муж</option>
+                            <option value="Female">Жен</option>
+                        </select>
+                        <P>Дата рождения</P>
+                        <div class="config_input_min_wrapper">
+                            <input class="input_border config_input_min" name="day_birth" placeholder="чис" type="number" min="1"
+                                max="31">
+                            <input class="input_border config_input_min" name="month_birth" placeholder="мес" type="number" min="1"
+                                max="12">
+                            <input class="input_border config_input_min" name="year_birth" placeholder="год" type="number" min="1900"
+                                max="2020">
+                        </div>
+                        <P>О себе</P><textarea name="about" class="input_border config_textarea"></textarea>
+                    </div>
+                    <button class="section_config_footer">Изменить</button>
+                </form>
+                <form class="section_config_wrapper form_tags" method="POST">
+                    <div class="section_config_header">
+                        <P>Отслеживать теги</P>
+                    </div>
+                    <div class="section_config_filters">
+                        <div class="section_config_input_filter">
+                            <input class="input_border input_tags" type="text">
+                            <div class="section_config_filters_btn tag_sub"></div>
+                        </div>
+                    </div>
+
+                    <div class="section_config_content tags_wrapper">
+                        
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">какя то дич</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">ужин</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">мишки</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">медведи</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">темный лес</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">какя то дич</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">ужин</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">здоровье</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">конфеты подруге на свадьбу</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">мишки</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">медведи</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">темный лес</div>
+                            <div class="section_config_tag_btn sub"></div>
+                        </div>
+                    </div>
+                    <button class="section_config_footer">Изменить</button>
+                </form>
+                <form class="section_config_wrapper form_tags" method="POST">
+                    <div class="section_config_header">
+                        <P>Скрывать теги</P>
+                    </div>
+                    <div class="section_config_filters">
+                        <div class="section_config_input_filter">
+                            <input class="input_border input_tags" type="text">
+                            <div class="section_config_filters_btn tag_block"></div>
+                        </div>
+                    </div>
+                    <div class="section_config_content tags_wrapper">
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">конфеты подруге на свадьбу</div>
+                            <div class="section_config_tag_btn block"></div>
+                        </div>
+                        <div class="section_config_tag">
+                            <div class="section_config_tag_name">мишки</div>
+                            <div class="section_config_tag_btn block"></div>
+                        </div>
+
+                    </div>
+                    <button class="section_config_footer">Изменить</button>
+                </form>
+            </section>
+
+            <div class="tabs_wrapper">
+                <button class="tabs_btn tabs_btn_active" type="button" data-tab="posts">Посты</button>
+                <button class="tabs_btn" type="button" data-tab="comments">Коментарии</button>
+                <button class="tabs_btn" type="button" data-tab="likes">Понравилось</button>
+                <button class="tabs_btn" type="button" data-tab="dislikes">Не понравилось</button>
+            </div>
+            <!-- <div class="tabs_content posts">
+                Загружаем посты
+            </div> -->
+            <div class="tabs_content comments">
+                <div class="comment_wrapper">
+                    <div class="comment_date">23 января 2019</div>
+                    <div class="comment_post_name">К посту: <a href="#">Как не просрать свою жизнь</a></div>
+                    <div class="commecnt_text">А у меня всё таки получилось</div>
+                </div>
+            </div>
+            <div class="tabs_content likes">
+                Списк понравившихся постов пользователя
+
+            </div>
+            <div class="tabs_content dislikes">
+                Списк постов которые пользователь не оценил
+
+            </div>
+
+        </div>
+
+        <a class="back_to_top" title="Наверх">&uarr;</a>
+    <div class="block_for_scroll"></div>
+    <div class="sitebar">
+            <!-- Окно пользователя начало -->
+            <aside class="temp_class_1 user_window_wrapper">
+                <a class="user_avatar" href="#"><img src="../static/img/default_avatar.svg"></a>
+                <a class="user_name" href="#">
+                    <div>Карлсон </div>
+                </a>
+                <a class="user_info" href="#">
+                    <div>Посты </div>
+                </a>
+                <a class="user_count" href="#">
+                    <div>32432432 </div>
+                </a>
+                <a class="user_info" href="#">
+                    <div>Рейтинг </div>
+                </a>
+                <a class="user_count" href="#">
+                    <div>232313 </div>
+                </a>
+                <a class="user_info" href="#">
+                    <div>Вернул сотку</div>
+                </a>
+                <a class="user_count" href="#">
+                    <div>312 раз </div>
+                </a>
+                <a class="user_small_btn" href="#">
+                    <div>Настройки </div>
+                </a>
+                <a class="user_small_btn" href="#">
+                    <div>Сообщения <div class="new_message_user"></div></div>
+                </a>
+                <a class="user_big_btn" href="#">
+                    <div>Выход </div>
+                </a>
+            </aside>
+            <div class="temp_class_1 config_switch_wrapper">
+
+
+                <div class="message_reload">
+                  Изменения вступят в силу после перезагрузки
+                </div>
+                <div class="config_switch">
+                  <label class="label_switch" for="NSFW">NSFW</label>
+                  <label class="switch">
+                    <input class="config_switch" id="NSFW" value="nsfw" type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="config_switch">
+                  <label class="label_switch" for="gore">Жесть</label>
+                  <label class="switch">
+                    <input class="config_switch" id="gore" value="gore" type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="config_switch">
+                  <label class="label_switch" for="politic">Политика</label>
+                  <label class="switch">
+                    <input class="config_switch" id="politic" value="politic" type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="config_switch">
+                  <label class="label_switch" for="hide_view">Скрывать просмотренное</label>
+                  <label class="switch">
+                    <input class="config_switch" id="hide_view" value="hide_view" type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+        
+        
+              </div>
+
+
+
+
+        </div>
+
+    </main>
+    <footer>
+        <div class="fone_footer"></div>
+
+        <!-- подвал -->
+
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.js"
+    integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+<script src="../static/js/main.js"></script>
+<script src="../static/js/serch_block_index.js"></script>
+<script src="../static/js/user.js"></script>
+<!-- <script src="../static/js/post_cover.js"></script> -->
+
+</html>

@@ -1,0 +1,87 @@
+@import "settings.scss";
+
+$text_size: 25px;
+
+.page_content_wrapper {
+  *{
+  transition: all 0.0s;
+  }
+}
+
+.search_form {
+  margin-top: 10px;
+  font-size: $text_size;
+.input_and_button_wrapper {
+  width: 100%;
+  display: flex;
+}
+}
+.search_form_input {
+  font-size: $text_size;
+  flex-grow: 1;
+  border-radius: 10px;
+  margin-right: 10px;
+  width: 100px;//по умолчанию, input не уеньшается меньше 276.67px
+}
+.search_form_button {
+  background-color: $base_color;
+  border-radius: 10px;
+}
+.search_buttons_wrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.search_buttons_cell {
+  width: 20%;
+  min-width: 150px;
+  background-color: $white;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  white-space: nowrap
+}
+.buttons_label{
+  min-width: 200px;
+  text-align: left;
+}
+.pass_cell {
+
+}
+.posts_counter {
+  margin-top: 20px;
+  font-size: $text_size;
+  border-bottom: 3px solid black;
+}
+
+.button_active{
+  background-color: $base_color;
+  color: $white;
+}
+
+@media (max-width: 870px) {
+  .buttons_label {
+    width: 100%;
+    text-align: center;
+  }
+  .search_buttons_cell{
+    margin-bottom: 10px;
+  }
+  
+}
+
+@media (max-width: 460px) {
+  $text_size: 20px;
+  .search_buttons_wrapper {
+    justify-content: space-evenly;
+  }
+  .search_buttons_cell {
+    font-size: $text_size;
+    min-width: 130px;
+  }
+  .buttons_label {
+    width: 100%;
+  }
+}

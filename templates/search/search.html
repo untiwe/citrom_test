@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block  head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/post_style.css' %}?v={{js_version}}" />
+  <link rel="stylesheet" href="{% static 'css/post_cover_style.css' %}?v={{js_version}}" />
+  <link rel="stylesheet" href="{% static 'css/search.css' %}?v={{js_version}}" />
+  {% if not_canonical %}
+    <link rel="canonical" href="https://citrom.ru/search/"/>
+  {% endif %}
+
+{% endblock head %}
+
+{% block title %}
+  {% if key %}
+  Поск сайта по слову {{key}}
+  {% else %}
+  Поск сайта
+  {% endif %}
+{% endblock title %}
+
+
+
+{% block  header %}
+   {{ block.super }}
+{% endblock header %}
+
+{% block content %}
+  {% include 'search/form_search.html' %}
+{% endblock content %}
+
+{% block script %}
+  {{ block.super }}
+
+  <script>var get_request = `?{{get_request}}`;</script>  {# Установка строки GET для подгрузки страниц в JS #}
+  <script src="{% static 'js/post_cover.js' %}?v={{js_version}}"></script>
+  <script src="{% static 'js/search.js' %}?v={{js_version}}"></script>
+  <script src="{% static 'js/content_generator.js' %}?v={{js_version}}"></script>
+{% endblock script %}

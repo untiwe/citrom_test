@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="../static/css/main.css" />
+  <link rel="stylesheet" href="../static/css/newpost.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rum+Raisin&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <div class="system_alert">
+      <p class="system_alert_text"></p>
+      <span class="system_alert_x">x</span>
+    </div>
+
+    <div class="section">
+      <a href="#" class="menu-btn">
+        <span></span><!-- span нужен для бургера -->
+      </a>
+    </div>
+    <div class="sitebar_btn">
+      <img src="../static/img/default_avatar.svg" />
+    </div>
+    <div class="fone_header">
+      <a class="fone_logo" href="#">Citrom</a>
+    </div>
+    <nav class="nav_header">
+      <a href="#" class="text_header logo">
+        <div class="">Citrom</div>
+      </a>
+      <a href="#" class="text_header">
+        <div class="">Лента</div>
+      </a>
+      <a href="#" class="text_header">
+        <div class="">Моя лента</div>
+      </a>
+      <a href="#" class="text_header">
+        <div class="">О нас</div>
+      </a>
+      <a href="#" class="text_header">
+        <div class="">Создать пост</div>
+      </a>
+      <div class="pass_header"></div>
+      <form action="#" method="GET" class="text_header search">
+        <div class="magnifier">
+          <button><img src="../static/img/magnifier.svg" /></button>
+        </div>
+        <input class="search_input" type="text" placeholder="Поиск" />
+      </form>
+    </nav>
+  </header>
+  <div class="break"></div>
+<main>
+    <div class="page_content_wrapper">
+      <form class="newpost">
+        <div class="newpost_cell">
+          <input placeholder="Название поста" class="temp_class_1 newpost_text newpost_name" />
+          <div class="newpost_cell_btns newpost_name_btns"></div>
+        </div>
+        <div class="newpost_cell newpost_blok">
+          <textarea class="temp_class_1 newpost_text" onkeyup="textarea_resize(this)" rows="1"></textarea>
+          <div class="newpost_cell_btns">
+            <img class="newpost_cell_btn_blockup" src="../static/img/newpost/move_block_up.svg" alt="перместить вврех" />
+            <img class="newpost_cell_btn_blockremove" src="../static/img/newpost/block_remove.svg" alt="удалить" />
+            <img class="newpost_cell_btn_blockdawn" src="../static/img/newpost/move_block_dawn.svg" alt="перместить вниз" />
+          </div>
+        </div>
+
+        <div class="newpost_cell newpost_blok">
+          <div class="temp_class_1 newpost_img">
+            <img src="../static/img/olen.jpg" alt="картинка" />
+          </div>
+          <div class="newpost_cell_btns">
+            <img class="newpost_cell_btn_blockup" src="../static/img/newpost/move_block_up.svg" alt="перместить вврех" />
+            <img class="newpost_cell_btn_blockremove" src="../static/img/newpost/block_remove.svg" alt="удалить" />
+            <img class="newpost_cell_btn_blockdawn" src="../static/img/newpost/move_block_dawn.svg" alt="перместить вниз" />
+          </div>
+        </div>
+
+        <div class="new_post_panel_btns">
+          <img class="new_post_new_video_btn" src="../static/img/newpost/new_block_video.svg" alt="добавить видео" />
+          <img class="new_post_new_text_btn" src="../static/img/newpost/new_block_text.svg" alt="добавить текст" />
+          
+          <input id="fotos" name="fotos[]" class="hidden" type="file" multiple />
+          <label class="new_post_new_fhotos_btn" for="fotos"><img src="../static/img/newpost/new_block_photo.svg" 
+              alt="добавить фото" /></label>
+              
+        </div>
+        <div class="temp_class_1 tags_input_wrapper">
+          <input class="new_post_tags" placeholder="От 2 до 20 тегов через запятую" />
+          <!-- <div class="tags_input_help_wrapper">
+                        <div class="tags_input_help">
+                            <div class="tags_input_help_tag">Авто</div>
+                            <div class="tags_input_help_count">1000</div>
+                        </div>
+                        <div class="tags_input_help">
+                            <div class="tags_input_help_tag">Шляпа</div>
+                            <div class="tags_input_help_count">537</div>
+                        </div>
+                        <div class="tags_input_help">
+                            <div class="tags_input_help_tag">Король</div>
+                            <div class="tags_input_help_count">22</div>
+                        </div>
+                        <div class="tags_input_help">
+                            <div class="tags_input_help_tag">Мерс</div>
+                            <div class="tags_input_help_count">121</div>
+                        </div>
+                        <div class="tags_input_help">
+                            <div class="tags_input_help_tag">Лужа</div>
+                            <div class="tags_input_help_count">100</div>
+                        </div>
+                        <div class="tags_input_help">
+                            <div class="tags_input_help_tag">Кровать</div>
+                            <div class="tags_input_help_count">412</div>
+                        </div>
+                        <div class="tags_input_help">
+                            <div class="tags_input_help_tag">Шутка</div>
+                            <div class="tags_input_help_count">11</div>
+                        </div>
+                     
+                    </div> -->
+        </div>
+        <div class="newpost_tagsgroup">
+          <p>
+            <input type="checkbox" value="nsfw" id="checkbox_nsfw" /><label for="checkbox_nsfw">NSFW (not safe for work)
+              эротика или “глубже” ;)</label>
+          </p>
+          <p>
+            <input type="checkbox" value="жесть" id="checkbox_gore" /><label for="checkbox_gore">Жесть - кровь, мясо,
+              расчлененка и другой подобный
+              контент</label>
+          </p>
+          <p>
+            <input type="checkbox" value="политика" id="checkbox_politic" /><label for="checkbox_politic">Политика -
+              любой текст/картинка/новость связанная с какой либо
+              страной или её политическим деятелем</label>
+          </p>
+          <p>
+            <input type="checkbox" value="мое" id="checkbox_mine" /><label for="checkbox_mine">Мое - если этот
+              текст/картинку написали вы, можете смело жать
+              сюда</label>
+          </p>
+        </div>
+
+        <div class="newpost_footer_btns">
+          <a class="temp_class_1 newpost_footer_btn" href="newpost.html">Отчистить</a>
+          <span class="temp_class_1 newpost_footer_btn publish">Опубликовать</span>
+          <a class="temp_class_1 newpost_footer_btn" href="#">Предпросмотр</a>
+        </div>
+      </form>
+    </div>
+
+    <a class="back_to_top" title="Наверх">&uarr;</a>
+    <div class="block_for_scroll"></div>
+    <div class="sitebar">
+      <!-- Окно пользователя начало -->
+      <aside class="temp_class_1 user_window_wrapper">
+        <a class="user_avatar" href="#"><img src="../static/img/default_avatar.svg" /></a>
+        <a class="user_name" href="#">
+          <div>Карлсон</div>
+        </a>
+        <a class="user_info" href="#">
+          <div>Посты</div>
+        </a>
+        <a class="user_count" href="#">
+          <div>32432432</div>
+        </a>
+        <a class="user_info" href="#">
+          <div>Рейтинг</div>
+        </a>
+        <a class="user_count" href="#">
+          <div>232313</div>
+        </a>
+        <a class="user_info" href="#">
+          <div>Вернул сотку</div>
+        </a>
+        <a class="user_count" href="#">
+          <div>312 раз</div>
+        </a>
+        <a class="user_small_btn" href="#">
+          <div>Настройки</div>
+        </a>
+        <a class="user_small_btn" href="#">
+          <div>Сообщения <div class="new_message_user"></div></div>
+        </a>
+        <a class="user_big_btn" href="#">
+          <div>Выход</div>
+        </a>
+      </aside>
+      <div class="temp_class_1 config_switch_wrapper">
+        <div class="message_reload">
+          Изменения вступят в силу после перезагрузки
+        </div>
+        <div class="config_switch">
+          <label class="label_switch" for="NSFW">NSFW</label>
+          <label class="switch">
+            <input class="config_switch" id="NSFW" value="nsfw" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="config_switch">
+          <label class="label_switch" for="gore">Жесть</label>
+          <label class="switch">
+            <input class="config_switch" id="gore" value="gore" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="config_switch">
+          <label class="label_switch" for="politic">Политика</label>
+          <label class="switch">
+            <input class="config_switch" id="politic" value="politic" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="config_switch">
+          <label class="label_switch" for="hide_view">Скрывать просмотренное</label>
+          <label class="switch">
+            <input class="config_switch" id="hide_view" value="hide_view" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="fone_footer"></div>
+
+    <!-- подвал -->
+  </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.js"
+  integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+<script src="../static/js/main.js' %}"></script>
+<script src="../static/js/serch_block_index.js' %}"></script>
+<script src="../static/js/newpost.js' %}"></script>
+
+</html>

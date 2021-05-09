@@ -1,0 +1,66 @@
+{% load static %}
+{% if request.user.is_authenticated %}
+
+    <aside class="temp_class_1 user_window_wrapper">
+        <a class="user_avatar" href="{% url 'user_view' request.user %}"><img src="{{user_avatar}}"></a>
+        <a class="user_name" href="{% url 'user_view' request.user %}">
+            <div>{{request.user}} </div>
+        </a>
+        <a class="user_info" href="{% url 'user_view' request.user %}">
+            <div>Посты </div>
+        </a>
+        <a class="user_count" href="{% url 'user_view' request.user %}">
+            <div>{{posts_count}} </div>
+        </a>
+        <a class="user_info" href="{% url 'user_view' request.user %}">
+            <div>Рейтинг </div>
+        </a>
+        <a class="user_count" href="{% url 'user_view' request.user %}">
+            <div>{{user_rating}}</div>
+        </a>
+        {% comment %} <a class="user_info" href="{% url 'user_view' request.user %}">
+            <div>Вернул сотку</div>
+        </a>
+        <a class="user_count" href="{% url 'user_view' request.user %}">
+            <div>312 раз </div>
+        </a> {% endcomment %}
+        <a href="{% url 'user_view' request.user %}" class="user_small_btn">
+            <div>Настройки </div>
+        </a>
+        <a class="user_small_btn" href="{% url 'messages_user' request.user %}">
+            <div>Сообщения 
+                {% if user_new_message %}
+                    <div class="new_message_user"></div>
+                {% endif %}
+            </div>
+        </a>
+        <div class="user_big_btn logout">
+            <div>Выход </div>
+        </div>
+    </aside>
+
+{% else %}
+{% comment %} Посколькку эта часть может зрузиться через index, дабы не громоздить там код сделал форму не автоматической {% endcomment %}
+    <form method="POST" class="temp_class_1 user_window_wrapper">
+        {% csrf_token %}
+        <p class="user_sell reg_message"></p>
+        <input class="user_sell input_user" type="text" name="username" placeholder="Логин" maxlength="30" required>
+        <input class="user_sell input_user" type="password" name="password" placeholder="Пароль" required>
+        <span class="user_sell no_password">Забыл пароль</span>
+        <button class="temp_class_1 user_sell enter_button" type="submit">Войти</button>
+        <span class="or">или</span>
+        <p class="temp_class_1 user_sell register_button">Регистрация</p>
+    </form>
+
+
+
+
+{% endif %}
+
+
+
+{% comment %} <form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Войти</button>
+    <form> {% endcomment %}

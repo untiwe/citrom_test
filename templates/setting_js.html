@@ -1,0 +1,37 @@
+{% load static %}
+<script>
+  //установки js сделаные оттельно, что бы была возможность упавлять ими с сервера
+
+
+  //есть 18 дет
+  {% if request.user.is_authenticated and is_18_age%}
+  var old_18 = true;
+  {% else %}
+  var old_18 = false;
+  {% endif %}
+
+  //проверка, есть ли предпросмотр поста, или нет. Что бы не подписываться на его оценку и просмотр
+  {% if post_preview %}
+  var post_preview = true;
+  {% else %}
+  var post_preview = false;
+  {% endif %}
+
+  //пути кнопок оценки контекта
+  //комментариев
+  var small_dawn_neutral_eval_src = '{% static 'img/small_dawn_neutral_eval.svg' %}?v={{static_version}}'
+  var small_dislike_eval_src = '{% static 'img/small_dislike_eval.svg' %}?v={{static_version}}'
+  var small_up_neutral_eval_src = '{% static 'img/small_up_neutral_eval.svg' %}?v={{static_version}}'
+  var small_like_eval_src = '{% static 'img/small_like_eval.svg' %}?v={{static_version}}'
+  //постов
+  var big_up_neutral_eval_src = '{% static 'img/big_up_neutral_eval.svg' %}?v={{static_version}}'
+  var big_dislike_eval_src = '{% static 'img/big_dislike_eval.svg' %}?v={{static_version}}'
+  var big_dawn_neutral_eval_src = '{% static 'img/big_dawn_neutral_eval.svg' %}?v={{static_version}}'
+  var big_like_eval_src = '{% static 'img/big_like_eval.svg' %}?v={{static_version}}'
+
+  /*Внимание! при смене имени, иметь ввиду, что для определения текущей оценки js проверяет имя в src картинки по типу:
+  (dislike_eval.src.indexOf('small_dislike_eval') != -1)
+  по этому, при смене имени, надо менять и строку проверки в js.
+  P.S. для меня
+  ебучий дурак, сделай блять нормально, не привязывай функционал к интерфейсу */
+</script>

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block  head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static '/css/aboutus.css' %}" />
+{% endblock head %}
+
+{% block title %}
+    Про сайт citrom
+{% endblock title %}
+
+
+{% block description %} 
+    <meta name="description" content="Здесь мождно почитать наши правила и ответы на основные вопросы. Если Впоросы еще остануться, внизу есть форма обраной связи">
+{% endblock description %}
+
+
+{% block content %}
+
+  {% include "aboutus/about_us_content.html" %}
+{% endblock content %}
+
+
+{% block script %}
+  {{ block.super }}
+  <script src="{% static 'js/aboutus.js' %}"></script>
+{% endblock script %}
+
+

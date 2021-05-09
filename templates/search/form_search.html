@@ -1,0 +1,35 @@
+{% load static %}
+<form class="search_form" method="GET">
+  <div class="input_and_button_wrapper">
+    <input class="temp_class_1 search_form_input" name="key" type="text" placeholder="Ключевое слово" value="{{key}}">
+    <button class="temp_class_1 search_form_button" type="submit">
+      <img src="{% static 'img/magnifier.svg' %}?v={{static_version}}" />
+    </button>
+  </div>
+  <div class="search_buttons_wrapper">
+
+    <input class="hidden search_option" name="name" type="checkbox" id="name" {% if name %} checked {% endif %}>
+    <input class="hidden search_option" name="text" type="checkbox" id="text" {% if content %} checked {% endif %}>
+    <input class="hidden search_option" name="tag" type="checkbox" id="tag" {% if tag %} checked {% endif %}>
+
+    <p class="search_buttons_cell buttons_label">Где ищем?</p>
+
+    <label class="temp_class_1 search_buttons_cell" for="name">В названии</label>
+    <label class="temp_class_1 search_buttons_cell" for="text">В тексте</label>
+    <label class="temp_class_1 search_buttons_cell" for="tag">В тегах</label>
+  </div>
+  <div class="search_buttons_wrapper">
+
+    <input class="hidden search_option" name="order_by" value="rating" type="radio" id="rating" {% if not date_filter %} checked {% endif %}>{# Если НЕТУ фильтра даты. Фильтр по рейтингу, стоит по умолчанию #}
+    <input class="hidden search_option" name="order_by" value="date" type="radio" id="date" {% if date_filter %} checked {% endif %}>
+
+    <p class="search_buttons_cell buttons_label">Сортировка по</p>
+
+    <label class="temp_class_1 search_buttons_cell" for="rating">Рейтингу</label>
+    <label class="temp_class_1 search_buttons_cell" for="date">Дате</label>
+    <label class="search_buttons_cell"></label>
+  </div>
+
+</form>
+
+<div class="posts_counter">Найдено постов: {{count_posts}}</div>

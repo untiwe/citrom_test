@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load static %}
+{% block  head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/post_style.css' %}?v={{css_version}}">
+    <link rel="stylesheet" href="{% static 'css/post_cover_style.css' %}?v={{css_version}}">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}?v={{css_version}}">
+    <link rel="stylesheet" href="{% static 'css/comments.css' %}?v={{css_version}}">
+{% endblock head %}
+
+{% block title %}
+  {{user.username}} - страница пользователя 
+{% endblock title %}
+
+{% block description %} 
+    <meta name="description" content="Здесь вы може посмотреть все посты нашего {{user.username}} у которого уже {{is_user_rating}} ретинга">
+{% endblock description %}
+
+
+{% block  header %}
+   {{ block.super }}
+{% endblock header %}
+
+
+    
+       
+        {% block content %}
+        
+        <!-- сразу подгружаем картинку загрузки для быстрой вставки -->
+        <div class="hidden"><img src="{% static 'img/time_refresh_avatar.svg' %}?v={{static_version}}"></div> 
+
+        
+            <section class="user_info_wrapper">
+                <div class="user_info_avatar">
+                <img class="temp_class_1" src="{{is_user_avatar}}" alt="аватар пользователя">
+                </div>
+
+
+                <div class="user_info_about">
+
+                    <input type="file" accept="image/*" id="load_avatar" value="load_avatar" class="hidden"></input>
+                    <div class="user_info_date_reg">{{user.username}} с {{user.date_joined|date:"j E Y"}}</div>
+                    <div class="user_info_cell">Постов {{is_user_posts_count}}</div>
+                    <div class="user_info_cell">Рейтинг {{is_user_rating}}</div>
+                    
+                    
+                    <div class="user_info_cell">Поставил <img src='{% static 'img/big_like_eval.svg' %}?v={{static_version}}'
+                            alt="плюс рейтинг"> {{liked_posts}} раз</div>
+                    <div class="user_info_cell">Поставил <img src='{% static 'img/big_dislike_eval.svg' %}?v={{static_version}}'
+                            alt="минус рейтинг"> {{disliked_posts}} раз</div>
+                    {% if this_user %}
+                    <div class="user_info_cell avatar_btns">
+                    
+                    
+                        <label class="btn_avatar left_btn" for="load_avatar"><img src="{% static 'img/refresh_avatar.svg' %}?v={{static_version}}" alt="Обновить"></label>
+                        <span class="btn_avatar right_btn"><img src="{% static 'img/delete_avatar.svg' %}?v={{static_version}}" alt="Удалить"></span>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+
+
+
+            </section>
+            {% if this_user %}
+                <section class="config">
+                    <form class="section_config_wrapper"  id="change_password_form" method="POST">
+                        <div class="section_config_header">
+                            <P>Смена пароля</P>
+                        </div>
+                        <div class="section_config_content">
+                            <P>Старый пароль</P><input class="input_border config_input" type="password" name="old_password"></input>
+                            <P>Новый пароль</P><input class="input_border config_input" type="password" name="new_password"></input>
+                            <P>Повторите пароль</P><input class="input_border config_input" type="password" name="new_password_repeat"></input>
+                        </div>
+                        <button class="section_config_footer">Изменить</button>
+                    </form>
+                    <form class="section_config_wrapper" id="info_user_form" method="POST">
+                        <div class="section_config_header">
+                            <P>Немного информации</P>
+                        </div>
+                        <div class="section_config_content">
+                            <P>Имя</P><input class="input_border config_input" value="{{user.first_name}}" name="first_name" type="text"></input>
+                            <P>Пол</P><select class="input_border config_input" name="gender" type="text">
+                                <option {% if profile.gender == 'Male' %} selected {% endif %} value="Male">Муж</option>
+                                <option {% if profile.gender == 'Female' %} selected {% endif %} value="Female">Жен</option>
+                            </select>
+                            <P>Дата рождения</P>
+                            <div class="config_input_min_wrapper">
+                                <input class="input_border config_input_min" value="{{profile.birth|date:"t"}}" name="day_birth" placeholder="чис" type="number" min="1"
+                                    max="31">
+                                <input class="input_border config_input_min" value="{{profile.birth|date:"n"}}" name="month_birth" placeholder="мес" type="number" min="1"
+                                    max="12">
+                                <input class="input_border config_input_min" value="{{profile.birth|date:"Y"}}" name="year_birth" placeholder="год" type="number" min="1900"
+                                    max="2020">
+                            </div>
+                            <P>О себе</P><textarea name="about" class="input_border config_textarea">{{profile.about}}</textarea>
+                        </div>
+                        <button class="section_config_footer">Изменить</button>
+                    </form>
+                    <form class="section_config_wrapper form_tags" method="POST">
+                        <div class="section_config_header">
+                            <P>Отслеживать теги</P>
+                        </div>
+                        <div class="section_config_filters">
+                            <div class="section_config_input_filter">
+                                <input class="input_border input_tags" type="text">
+                                <div class="section_config_filters_btn tag_sub"></div>
+                            </div>
+                        </div>
+
+                        <div class="section_config_content tags_wrapper">
+                            {% for tag in sub_tags_list %}
+                                <div class="section_config_tag">
+                                <div class="section_config_tag_name">{{tag}}</div>
+                                <div class="section_config_tag_btn sub"></div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <button class="section_config_footer">Изменить</button>
+                    </form>
+                    <form class="section_config_wrapper form_tags" method="POST">
+                        <div class="section_config_header">
+                            <P>Скрывать теги</P>
+                        </div>
+                        <div class="section_config_filters">
+                            <div class="section_config_input_filter">
+                                <input class="input_border input_tags" type="text">
+                                <div class="section_config_filters_btn tag_block"></div>
+                            </div>
+                        </div>
+                        <div class="section_config_content tags_wrapper">
+                            {% for tag in block_tags_list %}
+                                    <div class="section_config_tag">
+                                    <div class="section_config_tag_name">{{tag}}</div>
+                                    <div class="section_config_tag_btn block"></div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <button class="section_config_footer">Изменить</button>
+                    </form>
+                </section>
+            {% endif %}
+            <div class="tabs_wrapper">
+                <button class="tabs_btn tabs_btn_active" type="button" data-tab="posts">Посты</button>
+                {% if this_user %}
+                    <button class="tabs_btn" type="button" data-tab="comments">Коментарии</button>
+                    <button class="tabs_btn" type="button" data-tab="likes">Понравилось</button>
+                    <button class="tabs_btn" type="button" data-tab="dislikes">Не понравилось</button>
+                {% endif %}
+            </div>
+            {% comment %} <div class="tabs_content posts">
+                Загружаем посты
+            </div> {% endcomment %}
+            {% comment %} <div class="tabs_content comments">
+                <div class="comment_wrapper">
+                    <div class="comment_date">23 января 2019</div>
+                    <div class="comment_post_name">К посту: <a href="#">Как не просрать свою жизнь</a></div>
+                    <div class="commecnt_text">А у меня всё таки получилось</div>
+                </div>
+            </div>
+            <div class="tabs_content likes">
+                Списк понравившихся постов пользователя
+
+            </div>
+            <div class="tabs_content dislikes">
+                Списк постов которые пользователь не оценил
+
+            </div> {% endcomment %}
+        {% endblock content %}
+        
+{% block script %}
+  {{ block.super }}
+  {% if this_user %}
+  <script src="{% static 'js/user_posts.js' %}?v={{js_version}}"></script>
+  {% endif %}
+  <script src="{% static 'js/post_cover.js' %}?v={{js_version}}"></script>
+  <script src="{% static 'js/user.js' %}?v={{js_version}}"></script>
+  <script src="{% static 'js/content_generator.js' %}?v={{js_version}}"></script>
+{% endblock script %}

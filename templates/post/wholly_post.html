@@ -1,0 +1,90 @@
+{% load static %}
+<article class="post">   
+    <div class="post_name_wrapper">
+                        <h2 class="post_name"><a href="
+                            {% if post_preview %}  
+                            
+                            {%else%}
+                                {% url 'post' post_data.id %}
+                            {% endif %}
+
+                        ">{{post_data.name}}</a></h2>
+                    
+                    {% if may_change %}
+                        <img class="post_name_img" onclick="delete_post(this)" src="{% static 'img/delete_icon.svg' %}?v={{static_version}}" alt="удалить пост">
+                    {% endif %}
+                </div>
+    <section class="post_content">
+        {% if post_data.deletedposts %}
+        <div class="post_content_cell del_message">Пост удален</div>        
+        {% endif %}  
+        
+        <span class="post_tags">
+        
+        {% for tag in post_data.tags_set.all %}
+            <a href="{% url 'search' %}?tag=on&key={{tag}}" class="post_one_tag">{{tag}}</a>
+        {% endfor %}
+        
+        </span>
+       
+        {% with post_data.get_content_dict.items as content %}
+        
+            {% include "post/post_content.html" %}
+
+        {% endwith %} 
+
+    </section>
+
+    <section class="post_footer" data-post="{{post_data.id}}">
+        
+            {% if post_preview %} {#если предпросмотр поста, теги собраны и cookies#}
+                <a href="{% url 'user_view' request.user %}" class="post_footer_cell post_avatar">
+                <img src="{{user_avatar}}" {#переменная user_avatar из sitebar#}
+                {% else %}
+                <a href="{% url 'user_view' post_data.author %}" class="post_footer_cell post_avatar">
+                <img src="{{post_data.author.profile.avatar.url}}"
+            {% endif %}
+        alt="аватар">
+        </a>
+        <a href="
+            {% if post_preview %}
+                {% url 'user_view' request.user %}
+            {% else %}
+                {% url 'user_view' post_data.author %}
+            {% endif %}
+        " class="post_footer_cell post_author">{{post_data.author}}</a>
+        <div class="post_footer_cell post_footer_img_wrapper post_dawn_arrow"
+            onclick="eval_post(this.parentNode, false)"><img class="post_img_footer"
+                {% if eval == -1 %}
+                
+                src="{% static 'img/big_dislike_eval.svg' %}?v={{static_version}}" 
+                {% else %}
+                src="{% static 'img/big_dawn_neutral_eval.svg' %}?v={{static_version}}" 
+                {% endif %}
+                alt="плохая оценка"></div>
+        <div class="post_footer_cell post_count_score">{{post_data.post_rating}}</div>
+        <div class="post_footer_cell post_footer_img_wrapper post_up_arrow" onclick="eval_post(this.parentNode, true)">
+            <img class="post_img_footer" 
+            {% if eval == 1 %}
+            src="{% static 'img/big_like_eval.svg' %}?v={{static_version}}"
+            {% else %}
+            src="{% static 'img/big_up_neutral_eval.svg' %}?v={{static_version}}"
+            {% endif %}            
+            alt="хорошая оценка"></div>
+        <div class="post_footer_cell pass"></div>
+        <div class="post_footer_cell post_count_viwes">{{post_data.views}}</div>
+        <div class="post_footer_cell post_footer_img_wrapper post_eve"><img class="post_img_footer"
+        
+                src="{% static 'img/eve.svg' %}?v={{static_version}}" alt="картинка просмотров"></div>
+        <div class="post_footer_cell post_count_comments">{{comments_count}}</div>
+        {% if post_preview %}
+        <a href="" class="post_footer_cell post_footer_img_wrapper post_img_comments">
+        {% else %}
+         <a href="{% url 'post' post_data.id %}" class="post_footer_cell post_footer_img_wrapper post_img_comments">
+        {% endif %} 
+        <img class="post_img_footer"
+                src="{% static 'img/message.svg' %}?v={{static_version}}" alt="картинка коментариев"></a>
+    </section>
+
+
+</article>

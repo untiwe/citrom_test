@@ -1,0 +1,179 @@
+@import "settings.scss";
+//стидили для тела паоста
+.post {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  a,
+  a:visited {
+    color: $black;
+  }
+}
+.post_content {
+  padding: 10px;
+}
+
+.post_name_wrapper {
+  display: flex;
+  background-color: $dark_grey;
+  border-radius: 20px 20px 0px 0px;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+.post_name_img {
+  height: 20px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.post_name {
+  padding-left: 10px;
+  min-height: 20px;
+  //не нужно после добавления flexbox padding-right: 10px;
+  //не нужно после добавления flexbox min-height: 40px;
+  //не нужно после добавления flexbox line-height: 40px;
+  font-size: 30px;
+}
+.post_content {
+  background-color: $grey;
+  box-shadow: inset 0px 10px 10px -5px rgba(0, 0, 0, 0.25),
+    inset 0px -10px 4px -5px rgba(0, 0, 0, 0.25);
+  min-height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.post_content_cell {
+  margin-top: 10px;
+  font-size: 20px;
+  // height: min-content;
+  }
+
+.del_message{
+  color: red;
+  font-size: 35px;
+  text-align: center;
+}
+
+.post_content_cell_img_wrapper{
+  width: 100%;
+  text-align: center;
+  img {
+    max-width: 100%; //тут можно задать свойства для картинки внутри поста
+  }
+}
+
+.post_tags {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.post_one_tag {
+  margin-right: 10px;
+  text-decoration: underline;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+.post_footer {
+  padding-left: 10px;
+  min-height: 30px;
+  font-size: 20px;
+  background-color: $dark_grey;
+  border-radius: 0px 0px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  // a, //пока не решил как лучше
+  // a:visited {
+  //   color: $base_color;
+  // }
+}
+.post_footer_cell {
+  margin-right: 5px;
+}
+.post_footer_img_wrapper {
+  display: flex;
+}
+.post_img_footer {
+  height: 20px;
+}
+.post_avatar {
+  width: 28px;
+  height: 28px;
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid $base_color;
+    background-color: $white;
+    object-fit: cover;
+  }
+}
+.post_author {
+}
+.post_dawn_arrow {
+  cursor: pointer;
+}
+.post_count_score {
+}
+.post_up_arrow {
+  cursor: pointer;
+}
+.pass {
+  flex-grow: 1;
+}
+.post_count_viwes {
+}
+.post_eve {
+}
+.post_count_coments {
+}
+.post_img_coments {
+}
+
+@media (max-width: 768px) {
+  .post_content {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .post_name_img {
+    height: 18px;
+  }
+  .post_name {
+    padding-left: 5px;
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .post_content_cell {
+    font-size: 16px;
+  }
+
+  
+
+  .post_img_footer {
+    height: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  //временно удалил. 27.03.21 если проблем с подвалом поста до сих пор нету, значит можно удалить
+  //растягиваем пустую ячейку flex box на 100% что бы был адекватный перенос, и делаем отступ что бы строки небыли "прилипшими"
+  // .pass {
+  //   width: 100%;
+  // }
+  // .post_footer_cell {
+  //   margin-top: 3px;
+  // }
+
+  // .post_footer {
+  //   padding-left: 5px;
+  //   min-height: 10px;
+  //   font-size: 20px;
+  //   border-radius: 0px 0px 20px 20px;
+  //   justify-content: center;
+  // }
+}

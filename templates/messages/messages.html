@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block  head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/messages.css' %}?v={{css_version}}" />
+{% endblock head %}
+
+{% block title %}
+  Сообщения пользователя {{username}}
+{% endblock title %}
+
+
+{% block content %}
+
+{% endblock content %}
+
+
+{% block script %}
+  {{ block.super }}
+  <script src="{% static 'js/messages.js' %}?v={{js_version}}"></script>
+  <script src="{% static 'js/content_generator.js' %}?v={{js_version}}"></script>
+{% endblock script %}

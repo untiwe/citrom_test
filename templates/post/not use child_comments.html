@@ -1,0 +1,37 @@
+{%for key, comments in child_comments.items%}
+
+    {% if key == perent_comment_id %}
+
+        {%for comment in comments%}
+        {% comment %}
+        Эти 3 строки
+        {%for key, comments in child_comments.items%}
+        {% if key == perent_comment_id %}
+        {%for comment in comments%}
+
+        можно спокйно заменить на
+
+        {%for comment in child_comments.perent_comment_id%}
+
+        Но он почему то не выводится
+
+        {{perent_comment_id}} {# вывод родительского id: 24 #}
+        {{child_comments.24}} {# вывод дочерних комментариев: [<Comments: 22>, <Comments: 25>] #}
+        {{child_comments.perent_comment_id}} {# не выводит ничего #}
+
+        почему? хз Как бы работает, но это не дело
+
+        {% endcomment %}
+        <div class="comment" data-id="{{comment.id}}">
+            {% include "post/comment_body.html" %}
+
+            
+            {% with perent_comment_id='comment.id' %}
+
+                {% include "post/child_comments.html" %}
+
+            {% endwith %}
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endfor %}

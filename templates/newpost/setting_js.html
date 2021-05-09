@@ -1,0 +1,20 @@
+{% load static %}
+<script>
+
+
+//пути кнопок конструктора поста
+
+//кнопка блока "вниз"
+var move_block_dawn_src = '{% static 'img/newpost/move_block_dawn.svg' %}?v={{static_version}}'
+//кнопка блока "вверх"
+var move_block_up_src = '{% static 'img/newpost/move_block_up.svg' %}?v={{static_version}}'
+//кнопка блока "удалить"
+var block_remove_src = '{% static 'img/newpost/block_remove.svg' %}?v={{static_version}}'
+
+{% comment %} 
+Поскольку кнопки добаленрия блока отрисовываются сервером, он ине нужны. Но если вдруг понадобятся, то вот.
+var new_block_text_src = '{% static 'img/newpost/new_block_text.svg' %}?v={{static_version}}'
+var new_block_photo_src = '{% static 'img/newpost/new_block_photo.svg' %}?v={{static_version}}' 
+{% endcomment %}
+
+</script>

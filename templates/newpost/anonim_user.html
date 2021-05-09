@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block  head %}
+
+    {{ block.super }}
+        
+    <link rel="stylesheet" href="{% static 'css/newpost.css' %}" />
+
+{% endblock head %}
+
+{% block title %}
+    <title>Не создаь пост</title>
+{% endblock title %}
+
+
+{% block  header %}
+   {{ block.super }}
+{% endblock header %}
+
+
+{% block content %}
+
+        <h1 class="no_login_message">
+          Создание постов доступно только зарегистрированым пользователям.
+        </h1>  
+
+{% endblock content %}

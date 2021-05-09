@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block  head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/post_style.css' %}?v={{css_version}}" />
+  <link rel="stylesheet" href="{% static 'css/post_cover_style.css' %}?v={{css_version}}" />
+{% endblock head %}
+
+{% block title %}
+  {{title}}
+{% endblock title %}
+
+{% block description %}         
+        
+<meta name="description" content="{{description}}">
+{% endblock description %}
+
+{% block content %}
+{% include "yandex/block_rca_1.html" %}
+{% endblock content %}
+
+
+{% block script %}
+  {{ block.super }}
+  <script src="{% static 'js/post_cover.js' %}?v={{js_version}}"></script>
+  <script src="{% static 'js/index.js' %}?v={{js_version}}"></script>
+  <script src="{% static 'js/content_generator.js' %}?v={{js_version}}"></script>  
+{% endblock script %}

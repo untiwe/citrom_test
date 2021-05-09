@@ -1,0 +1,27 @@
+    {% if comment.deleted %}
+
+        <div class="comment_header">
+            <div class="comment_header_cell comment_header_count">{{comment.comment_rating}}</div>
+        </div>
+        <p class="comment_cell comment_content">Коментарий удален</p>
+                       
+    {% else %}
+
+    <div class="comment_header">
+            <a href="#" class="comment_header_cell comment_header_avatar"><img
+                    src="../../static/img/default_avatar.svg"></a>
+            <a href="#" class="comment_header_cell comment_header_author">{{comment.user_id}}</a>
+            <img class="comment_header_cell comment_header_dawn_small_arrow"
+                onclick="eval_comment(this.parentNode, false)" src="../../static/img/small_dawn_neutral_eval.svg">
+            <div class="comment_header_cell comment_header_count">{{comment.comment_rating}}</div>
+            <img class="comment_header_cell comment_header_up_small_arrow" onclick="eval_comment(this.parentNode, true)"
+                src="../../static/img/small_up_neutral_eval.svg">
+        </div>
+        <p class="comment_cell comment_content">{{comment.content}}</p>
+        {% for one_commentsphotos in comment.commentsphotos_set.all %}
+        {#Вывод фотографии. В загрузке сделана одна, но цикл позволяет сделать больше#}
+        <p class="comment_cell"><img src="{{one_commentsphotos.photo.url}}"></p>
+        {% endfor %}
+    <div class="comment_cell comment_footer">Ответить</div>
+
+    {% endif %}

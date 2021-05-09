@@ -1,0 +1,85 @@
+@import "settings.scss";
+//стили комментарие вынесены отдельно т.к. они используются на странице поста и могут использоватсья на странице пользовтаеля
+.comments_counter {
+  width: 100%;
+  font-size: 20px;
+  border-bottom: 4px solid black;
+  margin-top: 10px;
+}
+
+.comments_wrapper {
+  margin-left: -10px;
+  // border: 2px solid black;
+}
+.comment {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px -1px 10.1px;
+  background-color: $dark_grey;
+  box-shadow: -5px -5px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 1px solid $base_color;
+  min-height: 50px;
+  min-width: 300px;
+}
+
+.first_comment {
+  //margin-right: 1px;
+}
+
+.comment_cell {
+  margin: 5px 10px 5px 10px;
+  font-size: 20px;
+  img {
+    max-width: 100%;
+    max-height: 300px;
+  }
+}
+
+
+.comment_header {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+.comment_header_cell {
+  height: 30px;
+  margin-left: 5px;
+}
+.comment_header_avatar {
+  width: 25px;
+  height: 25px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid $base_color;
+    background-color: $white;
+  }
+}
+
+.comment_header_author {
+  color: $base_color;
+}
+
+.comment_header_dawn_small_arrow {
+  //приходится править из за кривого рисунка из фигмы
+  height: 70%;
+  margin-top: -8px;
+}
+.comment_header_up_small_arrow {
+  //приходится править из за кривого рисунка из фигмы
+  height: 70%;
+  margin-bottom: -4px;
+}
+
+.comment_header_del_icon{
+  margin-left: auto;
+  height: 20px;
+  padding-right: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.sub_massage_head {
+  text-align: center;
+  margin-top: 10%;
+  font-size: 30px;
+}
+.sub_massage_body {
+  text-align: center;
+  margin-top: 10%;
+  font-size: 24px;
+}
+.sub_massage_body a {
+  font-weight: bold;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for object in object_list %}
+   <url>
+      
+      <loc>https://citrom.ru{{object.get_absolute_url}}</loc>
+      
+      <lastmod>{{object.date_joined|date:"Y-m-d"}}</lastmod>
+
+     
+      <changefreq>never</changefreq>
+      <priority>0.1</priority>
+            
+   </url>
+{% endfor %}
+</urlset> 

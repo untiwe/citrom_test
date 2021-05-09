@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+{{ block.super }}
+
+<link rel="stylesheet" href="{% static 'css/post_style.css' %}?v={{css_version}}">
+<link rel="stylesheet" href="{% static 'css/comments.css' %}?v={{css_version}}">
+<link rel="stylesheet" href="{% static 'css/post.css' %}?v={{css_version}}">
+{% endblock head %}
+
+{% block title %}
+  {{post_data.name}} | {{post_data.author}}
+{% endblock title %}
+
+{% block description %} 
+    <meta name="description" content="{{post_data.name}} от пользователя {{post_data.author}} с рейтингом {{post_data.post_rating}} ">
+{% endblock description %}
+
+{% block header %}
+{{ block.super }}
+{% endblock header %}
+
+
+{% block content %}
+
+{% include "post/wholly_post.html" %}
+
+{% if not post_preview %}
+    {% include "post/comments_wrapper.html" %}
+{% endif %}
+
+{% include "yandex/block_rca_1.html" %}
+{% endblock content %}
+
+{% block script %}
+
+{{ block.super }}
+{% if not post_preview %}
+<script src="{% static 'js/post.js' %}?v={{js_version}}"></script>
+<script src="{% static 'js/content_generator.js' %}?v={{js_version}}"></script>
+{% else %}
+<script src="{% static 'js/new_post_preview.js' %}?v={{js_version}}"></script>
+{% endif %}
+
+{% endblock script %}

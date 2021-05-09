@@ -1,0 +1,20 @@
+
+<div class="comments_counter">Комментариев: {{comments_count}}</div>
+<div class="comments_wrapper">
+
+
+    {% comment %} {% include "post/not_use_comments.html" %} {% endcomment %} {# Использовалось для отрисовки постов сервером #}
+    
+
+    <form class="comment" method="POST">
+        <input type="hidden" name="post_id" value="{{post_data.pk}}">
+        <label class="comment_cell" id="label_comment">Оставьте свой коментрий</label>
+        <textarea class="comment_cell comment_textarea" name="content" maxlength="2000"></textarea>
+        <div class="comment_cell comment_time_photo"></div>
+        <span>
+            <label for="photo" class="comment_cell comment_input_footer">Файл</label>
+            <input accept="image/*" type="file" id="photo" name="photo" class="hidden"></input>
+            <button type="submit" class="comment_cell comment_input_footer">Ответить</button>
+        </span>
+    </form>
+</div>

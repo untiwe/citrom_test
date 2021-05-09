@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/newpost.css' %}?v={{css_version}}" />
+{% endblock head %}
+{% block title %}
+       Создание поста
+{% endblock title %}
+{% block header %}
+  {{ block.super }}
+{% endblock header %}
+
+
+{% block content %}
+
+{% csrf_token %}
+
+   <form class="newpost">
+        <div class="newpost_cell">
+          <input placeholder="Название поста" class="temp_class_1 newpost_text newpost_name" value="Вау какой олень"/>
+          <div class="newpost_cell_btns newpost_name_btns"></div>
+        </div>
+        <div class="newpost_cell newpost_blok">
+          <div class="temp_class_1 newpost_text" contenteditable="true">Вы только гляньте на этого красавца</div>
+          <div class="newpost_cell_btns">
+          
+          
+          
+            <img class="newpost_cell_btn_blockup" src="{% static 'img/newpost_move_up.svg' %}?v={{static_version}}" alt="перместить вврех" />
+            <img class="newpost_cell_btn_blockremove" src="{% static 'img/newpost_remove.svg' %}?v={{static_version}}" alt="удалить" />
+            <img class="newpost_cell_btn_blockdawn" src="{% static 'img/newpost_move_dawn.svg' %}?v={{static_version}}" alt="перместить вниз" />
+          </div>
+        </div>
+
+        <div class="newpost_cell newpost_blok">
+          <div class="temp_class_1 newpost_img">
+            <img src="{% static 'img/olen.img' %}?v={{static_version}}" alt="картинка" />
+          </div>
+          <div class="newpost_cell_btns">
+           <img class="newpost_cell_btn_blockup" src="{% static 'img/newpost_move_up.svg' %}?v={{static_version}}" alt="перместить вврех" />
+            <img class="newpost_cell_btn_blockremove" src="{% static 'img/newpost_remove.svg' %}?v={{static_version}}" alt="удалить" />
+            <img class="newpost_cell_btn_blockdawn" src="{% static 'img/newpost_move_dawn.svg' %}?v={{static_version}}" alt="перместить вниз" />
+          </div>
+        </div>
+
+        <div class="new_post_panel_btns">
+          <img class="new_post_new_text_btn" src="../static/img/newpost_newtext.svg" alt="добавить текс" />
+          <input id="fotos" name="fotos[]" class="hidden" type="file" multiple />
+          <label class="new_post_new_fhotos_btn" for="fotos"><img src="../static/img/newpost_newphoto.svg"
+              alt="добавить фото" /></label>
+        </div>
+        <div class="temp_class_1 tags_input_wrapper">
+          <input class="new_post_tags" placeholder="От 2 до 20 тегов через запятую" value="какой олень, олень, привет"/>
+         
+        </div>
+        <div class="newpost_tagsgroup">
+          <p>
+            <input type="checkbox" value="nsfw" id="checkbox_nsfw" /><label for="checkbox_nsfw">NSFW (not safe for work)
+              эротика или “глубже” ;)</label>
+          </p>
+          <p>
+            <input type="checkbox" value="жесть" id="checkbox_gore" /><label for="checkbox_gore">Жесть - кровь, мясо,
+              расчлененка и другой подобный
+              контент</label>
+          </p>
+          <p>
+            <input type="checkbox" value="политика" id="checkbox_politic" checked /><label for="checkbox_politic">Политика -
+              любой текст/картинка/новость связанная с какой либо
+              страной или её политическим деятелем</label>
+          </p>
+          <p>
+            <input type="checkbox" value="мое" id="checkbox_mine" checked /><label for="checkbox_mine">Мое - если этот
+              текст/картинку написали вы, можете смело жать
+              сюда</label>
+          </p>
+        </div>
+
+        <div class="newpost_footer_btns">
+          <span class="temp_class_1 newpost_footer_btn" id="nullify_post_btn">Отчистить</span>
+          <span class="temp_class_1 newpost_footer_btn publish">Опубликовать</span>
+          <span class="temp_class_1 newpost_footer_btn" id="preview_post_btn">Предпросмотр</span>
+        </div>
+      </form>
+
+{% endblock content %}
+
+
+{% block script %}
+
+  {{ block.super }}
+  <script src="{% static 'js/newpost.js' %}?v={{js_version}}"></script>
+
+{% endblock script %}

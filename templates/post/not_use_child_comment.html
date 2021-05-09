@@ -1,0 +1,11 @@
+<div class="comment" data-id="{{comment.id}}">
+
+    {% include "post/comment_body.html" %}
+    
+        {% for comment in comment.comments_set.all %}
+
+            {% include "post/child_comment.html" %}
+
+        {% endfor %}
+        
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   {% for one_sitemap in list_slises %}
+
+      <sitemap>
+         <loc>https://citrom.ru/sitemap/lists_{{list_name}}_{{one_sitemap}}/</loc>
+         {% if forloop.last %}
+         <lastmod>{% now "Y-m-d" %}</lastmod>
+         {% endif%}
+      </sitemap>
+
+   {% endfor %}
+
+</sitemapindex>

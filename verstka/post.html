@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/post.css">
+    <link rel="stylesheet" href="../static/css/post_style.css">
+    <link rel="stylesheet" href="../static/css/comments.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Rum+Raisin&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="system_alert"><p class="system_alert_text"></p><span class="system_alert_x">x</span></div>
+
+        <div class="section">
+            <a href="#" class="menu-btn">
+                <span></span><!-- span нужен для бургера -->
+            </a>
+        </div>
+        <div class="sitebar_btn">
+
+            <img src="../static/img/default_avatar.svg">
+        </div>
+        <div class="fone_header">
+            <a class="fone_logo" href="#">Citrom</a>
+        </div>
+        <nav class="nav_header">
+
+            <a href="#" class="text_header logo">
+                <div class="">Citrom</div>
+            </a>
+            <a href="#" class="text_header">
+                <div class="">Лента</div>
+            </a>
+            <a href="#" class="text_header">
+                <div class="">Моя лента</div>
+            </a>
+            <a href="#" class="text_header">
+                <div class="">О нас</div>
+            </a>
+            <a href="#" class="text_header">
+                <div class="">Создать пост</div>
+            </a>
+            <div class="pass_header"></div>
+            <form action="#" method="GET" class="text_header search">
+                <div class="magnifier"><button><img src="../static/img/magnifier.svg"></button>
+                </div>
+                <input class="search_input" type="text" placeholder="Поиск">
+            </form>
+        </nav>
+
+    </header>
+    <div class="break"></div>
+<main>
+        <div class="page_content_wrapper">
+
+            <article class="post">
+                <div class="post_name_wrapper">
+                    <h2 class="post_name"><a href="#">Неожиданная встреча в лесу</a></h2>
+                    <img class="post_name_img" onclick="delete_post(this)" src="../static/img/delete_icon.svg" alt="удалить пост">
+                </div>
+                <section class="post_content">
+                    <div class="post_content_cell del_message">Пост удален</div> 
+                    <p class="post_content_cell">Сегодня я гулял по лесу. Люблю ходить туда прохладными весенними
+                        ктрами. Когджа на улице еще не очень холодно. И мне там попался весьма приятный сюрприз</p>
+                    <p class="post_content_cell_img_wrapper"><img onload="try_post_content_uncover()" src="../static/img/olen.jpg"></p>
+
+                    <p class="post_content_cell">
+                        
+                            <iframe width="100%" height="400" src="https://www.youtube.com/embed/6ud9SJoqGCw" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
+
+                        
+                    </p>
+                    
+                    
+                    <p class="post_content_cell_img_wrapper"><img onload="try_post_content_uncover()" src="../static/img/olen2.jpg"></p>
+                    <p class="post_content_cell">Вот таких красавцев я повстречал сегодня, пока гулял в лесу.</p>
+                    <span class="post_tags">
+                        <a href="#" class="post_one_tag">олени</a>
+                        <a href="#" class="post_one_tag">прогулка</a>
+                        <a href="#" class="post_one_tag">лес</a>
+                        <a href="#" class="post_one_tag">фото</a>
+                        <a href="#" class="post_one_tag">истрия из жизни</a>
+                    </span>
+                </section>
+
+                <section class="post_footer">
+                    <a href="#" class="post_footer_cell post_avatar"><img src="../static/img/default_avatar.svg"
+                            alt="аватар"></a>
+                    <a href="#" class="post_footer_cell post_author">Карлсон</a>
+                    <div class="post_footer_cell post_footer_img_wrapper post_dawn_arrow"
+                        onclick="eval_post(this.parentNode, false)"><img class="post_img_footer"
+                            src="../static/img/big_dawn_neutral_eval.svg" alt="плохая оценка"></div>
+                    <div class="post_footer_cell post_count_score">15341</div>
+                    <div class="post_footer_cell post_footer_img_wrapper post_up_arrow"
+                        onclick="eval_post(this.parentNode, true)"><img class="post_img_footer"
+                            src="../static/img/big_up_neutral_eval.svg" alt="хорошая оценка"></div>
+                    <div class="post_footer_cell pass"></div>
+                    <div class="post_footer_cell post_count_viwes">3547</div>
+                    <div class="post_footer_cell post_footer_img_wrapper post_eve"><img class="post_img_footer"
+                            src="../static/img/eve.svg" alt="картинка просмотров"></div>
+                    <div class="post_footer_cell post_count_comments">3456</div>
+                    <a href="#" class="post_footer_cell post_footer_img_wrapper post_img_comments"><img
+                            class="post_img_footer" src="../static/img/message.svg" alt="картинка коментариев"></a>
+                </section>
+
+            </article>
+            <div class="comments_counter">Комментариев: 60</div>
+            <div class="comments_wrapper">
+                <div class="comment" data-id="23423423">
+                    <div class="comment_header">
+                        <a href="#" class="comment_header_cell comment_header_avatar"><img
+                                src="../static/img/default_avatar.svg"></a>
+                        <a href="#" class="comment_header_cell comment_header_author">Карлсон</a>
+                        <img class="comment_header_cell comment_header_dawn_small_arrow"
+                            onclick="eval_comment(this.parentNode, false)"
+                            src="../static/img/small_dawn_neutral_eval.svg">
+                        <div class="comment_header_cell comment_header_count">9999</div>
+                        <img class="comment_header_cell comment_header_up_small_arrow"
+                            onclick="eval_comment(this.parentNode, true)" src="../static/img/small_up_neutral_eval.svg">
+                    </div>
+                    <p class="comment_cell comment_content">Очень красивые Олени</p>
+                    <div class="comment_cell comment_footer">Ответить</div>
+                    <div class="comment"  data-id="23423423">
+                        <div class="comment_header">
+                            <a href="#" class="comment_header_cell comment_header_avatar"><img
+                                    src="../static/img/default_avatar.svg"></a>
+                            <a href="#" class="comment_header_cell comment_header_author">Forzacloha654</a>
+                            <img class="comment_header_cell comment_header_dawn_small_arrow"
+                                onclick="eval_comment(this.parentNode, false)"
+                                src="../static/img/small_dawn_neutral_eval.svg">
+                            <div class="comment_header_cell comment_header_count">9999</div>
+                            <img class="comment_header_cell comment_header_up_small_arrow"
+                                onclick="eval_comment(this.parentNode, true)"
+                                src="../static/img/small_up_neutral_eval.svg">
+                        </div>
+                        <p class="comment_cell comment_content">Я однажды тоже видел молодого, пятнистого Оленя</p>
+                        <div class="comment_cell comment_footer">Ответить</div>
+                    </div>
+                    <div class="comment" data-id="232423">
+                        <div class="comment_header">
+                            <a href="#" class="comment_header_cell comment_header_avatar"><img
+                                    src="../static/img/default_avatar.svg"></a>
+                            <a href="#" class="comment_header_cell comment_header_author">Domoclon1992</a>
+                            <img class="comment_header_cell comment_header_dawn_small_arrow"
+                                onclick="eval_comment(this.parentNode, false)"
+                                src="../static/img/small_dawn_neutral_eval.svg">
+                            <div class="comment_header_cell comment_header_count">9999</div>
+                            <img class="comment_header_cell comment_header_up_small_arrow"
+                                onclick="eval_comment(this.parentNode, true)"
+                                src="../static/img/small_up_neutral_eval.svg">
+                        </div>
+                        <p class="comment_cell comment_content">Как же ты так далеко ушел? Ведь олени близко не ходят.
+                            Надо уходить достаточно далеко, что бы найти Оленя. Я тоже как
+                            то задался целью найти оленя, но сколько не бродил полесу, так и не нашел. За то вступил в
+                            остатки его
+                            жизнидеятельности:(</p>
+                        <div class="comment_cell comment_footer">Ответить</div>
+                        <div class="comment" data-id="231123">
+                            <div class="comment_header">
+                                <a href="#" class="comment_header_cell comment_header_avatar"><img
+                                        src="../static/img/default_avatar.svg"></a>
+                                <a href="#" class="comment_header_cell comment_header_author">Forzacloha654</a>
+                                <img class="comment_header_cell comment_header_dawn_small_arrow"
+                                    onclick="eval_comment(this.parentNode, false)"
+                                    src="../static/img/small_dawn_neutral_eval.svg">
+                                <div class="comment_header_cell comment_header_count">9999</div>
+                                <img class="comment_header_cell comment_header_up_small_arrow"
+                                    onclick="eval_comment(this.parentNode, true)"
+                                    src="../static/img/small_up_neutral_eval.svg">
+                                <img class="comment_header_cell comment_header_del_icon" onclick="delete_comment(this)" src="../static/img/delete_icon.svg" alt="удалить пост">
+                            </div>
+                            <p class="comment_cell comment_content">Я как то их окна дома вообще видел. Так что ты не прав
+                            </p>
+                            <div class="comment_cell comment_footer">Ответить</div>
+                        </div>
+                        <div class="comment" data-id="2343">
+                            <div class="comment_header">
+                                <div class="comment_header_cell comment_header_count">9999</div>
+
+                            </div>
+                            <p class="comment_cell comment_content">коментарий удален</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment" data-id="2323423">
+                    <div class="comment_header">
+                        <a href="#" class="comment_header_cell comment_header_avatar"><img
+                                src="../static/img/default_avatar.svg"></a>
+                        <a href="#" class="comment_header_cell comment_header_author">Лолотехник</a>
+                        <img class="comment_header_cell comment_header_dawn_small_arrow"
+                            onclick="eval_comment(this.parentNode, false)"
+                            src="../static/img/small_dawn_neutral_eval.svg">
+                        <div class="comment_header_cell comment_header_count">9999</div>
+                        <img class="comment_header_cell comment_header_up_small_arrow"
+                            onclick="eval_comment(this.parentNode, true)" src="../static/img/small_up_neutral_eval.svg">
+                    </div>
+                    <p class="comment_cell comment_content">Какие они милашки</p>
+                    <p class="comment_cell"><img src="../static/img/olen2.jpg"></p>
+                    <div class="comment_cell comment_footer" id="nom676575756">Ответить</div>
+                </div>
+                <form class="comment" method="POST">
+                    <input type="hidden" name="post" value="121212121212">
+                    <label class="comment_cell" id="label_comment">Оставьте свой коментрий</label>
+                    <textarea class="comment_cell comment_textarea" maxlength="2000"></textarea>
+                    <div class="comment_cell comment_time_photo"></div>
+                    <span>
+                        <label for="photo" class="comment_cell comment_input_footer">Файл</label>
+                        <input accept="image/*" type="file" id="photo" name="photo" class="hidden"></input>
+                        <button type="submit" class="comment_cell comment_input_footer">Ответить</button>
+                    </span>
+                </form>
+            </div>
+        </div>
+        <a class="back_to_top" title="Наверх">&uarr;</a>
+    <div class="block_for_scroll"></div>
+    <div class="sitebar">
+            <!-- Окно пользователя начало -->
+            <aside class="temp_class_1 user_window_wrapper">
+                <a class="user_avatar" href="#"><img src="../static/img/default_avatar.svg"></a>
+                <a class="user_name" href="#">
+                    <div>Карлсон </div>
+                </a>
+                <a class="user_info" href="#">
+                    <div>Посты </div>
+                </a>
+                <a class="user_count" href="#">
+                    <div>32432432 </div>
+                </a>
+                <a class="user_info" href="#">
+                    <div>Рейтинг </div>
+                </a>
+                <a class="user_count" href="#">
+                    <div>232313 </div>
+                </a>
+                <a class="user_info" href="#">
+                    <div>Вернул сотку</div>
+                </a>
+                <a class="user_count" href="#">
+                    <div>312 раз </div>
+                </a>
+                <a class="user_small_btn" href="#">
+                    <div>Настройки </div>
+                </a>
+                <a class="user_small_btn" href="#">
+                    <div>Сообщения <div class="new_message_user"></div></div>
+                </a>
+                <a class="user_big_btn" href="#">
+                    <div>Выход </div>
+                </a>
+            </aside>
+            <div class="temp_class_1 config_switch_wrapper">
+
+
+                <div class="message_reload">
+                  Изменения вступят в силу после перезагрузки
+                </div>
+                <div class="config_switch">
+                  <label class="label_switch" for="NSFW">NSFW</label>
+                  <label class="switch">
+                    <input class="config_switch" id="NSFW" value="nsfw" type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="config_switch">
+                  <label class="label_switch" for="gore">Жесть</label>
+                  <label class="switch">
+                    <input class="config_switch" id="gore" value="gore" type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="config_switch">
+                  <label class="label_switch" for="politic">Политика</label>
+                  <label class="switch">
+                    <input class="config_switch" id="politic" value="politic" type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="config_switch">
+                  <label class="label_switch" for="hide_view">Скрывать просмотренное</label>
+                  <label class="switch">
+                    <input class="config_switch" id="hide_view" value="hide_view" type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+        
+        
+              </div>
+
+
+
+
+        </div>
+
+    </main>
+    <footer>
+        <div class="fone_footer"></div>
+
+        <!-- подвал -->
+
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.js"
+    integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+<script src="../static/js/main.js"></script>
+<script src="../static/js/post.js"></script>
+<script src="../static/js/content_generator.js"></script>
+
+</html>
