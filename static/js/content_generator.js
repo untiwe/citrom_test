@@ -163,7 +163,6 @@ function load_content() {
 
     clear_content_message()//убираем сообщения о конце контента (их может и не быть, но ошибки не будет)
     let content = ajax_load_content();
-    let yandex_block = document.querySelector('.yandex-block')
     let scope = document.querySelector('.page_content_wrapper');
     let object_in_page = 5//объектов на странице, постов 5, сообщений и коментариев 10
     
@@ -175,9 +174,7 @@ function load_content() {
         for (key in content) {
             let one_post = post_generator(content[key]);
 
-            if (page_number == 2 && yandex_block && content_counter == 0)//первый пост вставляется перед рекламой, остальные после, если блок рекламы есть
-                yandex_block.insertAdjacentHTML("beforebegin", one_post);
-            else
+            
             scope.insertAdjacentHTML("beforeend", one_post);
 
             content_counter++
